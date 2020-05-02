@@ -5,6 +5,10 @@ const ArticleSchema = new mongoose.Schema({
   title: String,
   description: String,
   featureImg: String,
+  claps: {
+    type: Number,
+    default: 0,
+  },
   author: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',

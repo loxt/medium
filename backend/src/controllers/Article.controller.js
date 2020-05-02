@@ -27,21 +27,17 @@ module.exports = {
           ],
         }
       );
-    } else {
-      saveArticle({ text, title, claps, description, featureImg: '' });
-    }
+    } else saveArticle({ text, title, claps, description, featureImg: '' });
 
     function saveArticle(obj) {
-      new Article(obj).save((err, article) => {
+      new Article(obj).save(async (err, article) => {
         if (err) res.send(err);
         else if (!article) res.send(400);
-        else {
-          const { addAuthor } = article;
-          const { authorId } = req.body;
-          addAuthor(authorId).then((_article) => {
-            return res.send(_article);
-          });
-        }
+
+        const { authorId } = req.body;
+        await article.addAuthor(authorId).then((_article) => {
+          res.send(_article);
+        });
         next();
       });
     }
