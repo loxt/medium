@@ -1,16 +1,21 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
   "dependencies": {
     "cloudinary": "^1.21.0",
     "compression": "^1.7.4",
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
-    "mongoose": "^5.9.11"
+    "mongoose": "^5.9.11",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

@@ -4,16 +4,15 @@ const ArticleSchema = new mongoose.Schema({
   text: String,
   title: String,
   description: String,
-  feature_img: String,
-  teste: String,
+  featureImg: String,
   author: {
-    type: mongoose.schema.ObjectId,
+    type: mongoose.Schema.ObjectId,
     ref: 'User',
   },
   comments: [
     {
       author: {
-        type: mongoose.schema.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'User',
       },
       text: String,
