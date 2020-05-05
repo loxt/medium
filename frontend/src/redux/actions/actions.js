@@ -1,4 +1,4 @@
-import api from '../../../config/api';
+import api from '../../config/api';
 
 export function loadArticles() {
   return (dispatch) => {
@@ -74,8 +74,14 @@ export function SignInUser(userData) {
   };
 }
 
-export function toggle() {
+export function toggleOpen() {
   return (dispatch) => {
-    dispatch({ type: 'TOGGLE_MODAL', modalMode: !this.modalMode });
+    dispatch({ type: 'TOGGLE_MODAL', modalMode: true });
+  };
+}
+
+export function toggleClose() {
+  return (dispatch) => {
+    dispatch({ type: 'TOGGLE_MODAL', modalMode: false });
   };
 }

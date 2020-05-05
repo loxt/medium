@@ -38,6 +38,12 @@ module.exports = {
     'no-console': 'off',
     'no-underscore-dangle': 'off',
     'import/prefer-default-export': 'off',
-    'react/jsx-props-no-spreading': 'off'
+    'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
+    'jsx-a11y/anchor-has-content': 'off',
+    'react/no-danger': 'off',
+    'no-script-url': 'off'
   },
 };

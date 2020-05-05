@@ -8,6 +8,7 @@ const history = createBrowserHistory();
 
 export default function (Component) {
   const { thisAuth } = store.getState();
+
   useEffect(() => {
     if (!thisAuth) {
       history.push('/');

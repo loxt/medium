@@ -1,5 +1,87 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default function Header() {
-  return <div />;
+function Header(props) {
+  const { isAuth } = props;
+  const { openSignInWith, isAuth: isAuth1 } = props;
+  return (
+    <div>
+      <div data-react-className='UserOverlay' data-react-props='{}'>
+        <div className='overlay overlay-hugeinc ' data-reactroot=''>
+          <button className='overlay-close'>
+            <span className='glyphicon glyphicon-remove' />
+          </button>
+          <nav className='users-overlay'>
+            <h2 className='grayed-heading center' />
+            <ul>
+              <li className='pagination-button-group' />
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div data-behavior='progress-bar' className='progress-bar' />
+      <nav
+        data-behavior='animated-navbar'
+        className='navbar navbar-default navbar-fixed-top is-inView'
+      >
+        <div className='container-fluid col-md-10 col-md-offset-1'>
+          <div className='navbar-header'>
+            <a className='navbar-brand' id='logo' href='/' />
+          </div>
+          <ul className='nav navbar-nav filter-links'>
+            <li>
+              <a className='' href='/'>
+                Top stories
+              </a>
+            </li>
+          </ul>
+          <div className='folding-nav'>
+            <ul className='nav navbar-nav navbar-right'>
+              {isAuth ? (
+                <li className='new-post-button'>
+                  <a
+                    className='button'
+                    data-behavior='trigger-overlay'
+                    href='/editor'
+                  >
+                    Write a story
+                  </a>
+                </li>
+              ) : (
+                ''
+              )}
+              {isAuth1 ? (
+                ''
+              ) : (
+                <li onClick={openSignInWith} className='sign-in-button'>
+                  <a
+                    className='button green-border-button'
+                    data-behavior='trigger-overlay'
+                    href='#'
+                  >
+                    Sign in / Sign up
+                  </a>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.authUser.user,
+    isAuth: state.authUser.isAuth,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openSignInWith: () => {
+      dispatch({ type: 'TOGGLE_MODAL', modalMode: true });
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
