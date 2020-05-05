@@ -7,6 +7,7 @@ import Feed from './components/Feed';
 import Profile from './components/Profile';
 import Editor from './components/Editor';
 import ArticleView from './components/ArticleView';
+import requireAuth from './utils/requireAuth';
 
 export default function App() {
   const pathName = window.location.pathname;
@@ -18,7 +19,7 @@ export default function App() {
           <Route exact path='/' component={Feed} />
           <Route path='/profile/:id' component={Profile} />
           <Route path='/articleview/:id' component={ArticleView} />
-          <Route path='/editor' component={Editor} />
+          <Route path='/editor' component={requireAuth(Editor)} />
           <Route path='**' component={Feed} />
         </Switch>
       </SignInWith>

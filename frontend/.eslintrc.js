@@ -38,5 +38,6 @@ module.exports = {
     'no-console': 'off',
     'no-underscore-dangle': 'off',
     'import/prefer-default-export': 'off',
+    'react/jsx-props-no-spreading': 'off'
   },
 };
